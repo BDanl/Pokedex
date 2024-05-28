@@ -1,0 +1,62 @@
+@page "/pokemon/{pokemonId}"
+@using Pokedex.Models
+@using Pokedex.Util
+@inject PokeClient client
+
+<PageTitle>Pokemon</PageTitle>
+
+<div>
+    <div class="container">
+        <div class="card">
+            @if(@pokemon.types.Count > 0){
+                <div class="card-top" style="background-color: @PokeColor.GetTypeColor(@pokemon.types[0].type.name)">
+                    <img src="@pokemon.sprites.front_default" alt="card" class="card-img-top">
+                </div>
+            }
+            <div class="inner-container">
+                <div class="stats-head">
+                    <div class="icon-container">
+                        <img src="/img/@PokeUtil.RandomBall()" alt="pokeball2" class="poke-icon">
+                        <div>
+                        <h1 class="pokemon-name card-title text-center">@pokemon.name</h1>
+                        </div>
+                    </div>
+                    <div class="pokemon-info">
+                        <h5>Height: @pokemon.height</h5>
+                    </div>
+                    @foreach(var type in pokemon.types){
+                        <span class="type-badge" style="background-color: @PokeColor.GetTypeColor(@type.type.name)">@type.type.name</span>
+                    }
+                </div>
+                <h5>Weight: @pokemon.weight kg</h5>
+            </div>
+        </div>
+        <div class="stats-head">
+            <div class="icon-container">
+                <img src="img\pokeball.png" alt="pokeball" class="imgpokeball">
+                <h2>Stats</h2>
+            </div>
+            @foreach(var stat in pokemon?.stats){
+                <div class="stat-bar">
+                    <h5 class="stat">@stat.stat.name: @stat.base_stat</h5>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: @stat.base_stat%; 
+                        background-color: @PokeColor.GetStatColor(@stat.stat.name)" aria-valuenow="100" aria-valuemin="0" 
+                        aria-valuemax="200">
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string pokemonId { get; set; } = "";
+    Pokemon pokemon = new Pokemon();
+    protected override async Task OnInitializedAsync()
+    {
+        pokemon = await client.GetPokemon(pokemonId);
+    }
+}
