@@ -15,5 +15,13 @@ namespace Pokedex.Util
                 return JsonSerializer.Deserialize<Pokemon>(content);
         }
 
+        public async Task<Pokemon> GetPokemonType(string type){
+                var response = await this.Client.GetAsync($"https://pokeapi.co/api/v2/pokemon/type/{type}");
+                var content = await response.Content.ReadAsStringAsync();
+
+                return JsonSerializer.Deserialize<Pokemon>(content);
+        }
+
+
     }
 }

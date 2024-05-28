@@ -1031,3 +1031,5 @@ C:\Users\aleja\source\repos\Pokedex\Pokedex\obj\Debug\net8.0\scopedcss\projectbu
 C:\Users\aleja\source\repos\Pokedex\Pokedex\obj\Debug\net8.0\scopedcss\Pages\PokemonCard.razor.rz.scp.css
 C:\Users\aleja\source\repos\Pokedex\Pokedex\obj\Debug\net8.0\scopedcss\Layout\Footer.razor.rz.scp.css
 C:\Users\aleja\source\repos\Pokedex\Pokedex\obj\Debug\net8.0\scopedcss\Layout\MainLayout.razor.rz.scp.css
+C:\Users\aleja\source\repos\Pokedex\Pokedex\obj\Debug\net8.0\Pokedex.sourcelink.json
+C:\Users\aleja\source\repos\Pokedex\Pokedex\obj\Debug\net8.0\scopedcss\Layout\Navbar.razor.rz.scp.css
